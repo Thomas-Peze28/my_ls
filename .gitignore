@@ -1,0 +1,14 @@
+.cache
+.git
+*.log
+a.out
+*.o
+*.a
+test
+unit_tests
+*.gcda
+*.gcno
+*.sa
+*.se
+coding*
+test*
