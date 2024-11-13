@@ -44,12 +44,23 @@ int check_number(const char *str, int i);
 int my_getsign(char const *str);
 int my_putnbr_base(int nbr, char const *base);
 int mini_printf(const char *format, ...);
-int fs_open_file(char const * filepath);
-void fs_understand_return_of_read(int fd, char* buffer, int size);
+int fs_open_file(char const *filepath);
+void fs_understand_return_of_read(int fd, char *buffer, int size);
 void fs_cat_500_bytes(char const *filepath);
 void fs_cat_x_bytes(char const *filepath, int x);
+int my_putnbr_base(int nbr, char const *base);
+double posi(double n);
+int nota_sc_e(int dot);
+int nota_sc_cont(int dot, int nbcara);
+int my_putnbr_e(double n, long pre);
+int my_putnbr_sc(double n, long pre);
+int my_put_long(unsigned long int nb);
+int my_put_float(double n, int pre);
+double my_round(double n, int pres);
+int my_put_unsigned(long int nb);
+int my_printf(const char *format, ...);
 int ls_bs(int ac, char **av);
-int ls(int ac, char **av);
+int my_ls(int ac, char **av);
 
 
 

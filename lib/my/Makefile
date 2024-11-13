@@ -33,6 +33,13 @@ SRC	=	my_compute_power_rec.c	\
 		my_str_to_word_array.c	\
 		my_putnbr_base.c	\
 		mini_printf.c	\
+		my_put_float.c	\
+		my_putnbr_e.c	\
+		my_putnbr_sc.c	\
+		my_put_unsigned.c	\
+		my_put_long.c	\
+		my_round.c	\
+		my_printf.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

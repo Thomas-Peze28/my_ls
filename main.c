@@ -9,6 +9,6 @@
 
 int main(int ac, char **av)
 {
-    ls(ac, av);
+    my_ls(ac, av);
     return 0;
 }
