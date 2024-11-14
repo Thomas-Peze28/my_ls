@@ -15,5 +15,6 @@ char *my_strcpy(char *dest, char const *src)
         dest[count] = src[count];
         count++;
     }
+    dest[count] = '\0';
     return dest;
 }

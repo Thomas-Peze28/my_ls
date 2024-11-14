@@ -4,13 +4,16 @@
 ** File description:
 ** easy version of ls
 */
-#include <sys/types.h>
-#include <dirent.h>
-#include <sys/stat.h>
 #include <stdio.h>
-#include "include/my.h"
+#include <stdlib.h>
+#include <unistd.h>
 #include <time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <dirent.h>
 #include <pwd.h>
+#include <grp.h>
+#include "include/my.h"
 
 int read_dir(char *path)
 {
@@ -57,7 +60,12 @@ int my_ls(int ac, char **av)
         return 0;
     }
     for (int i = 1; i < ac; i++) {
-        mini_printf("%s:\n", av[i]);
+        if (opendir(av[i]) == NULL) {
+            mini_printf("%s\n", av[i]);
+        }
+        if (ac > 2 && opendir(av[i]) != NULL) {
+            mini_printf("%s:\n", av[i]);
+        }
         read_dir(av[i]);
         if (i != ac - 1) {
             mini_printf("\n");
