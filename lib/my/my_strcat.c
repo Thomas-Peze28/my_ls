@@ -7,10 +7,15 @@
 
 #include "my.h"
 
-char *my_strcat(char *dest, char const *src)
+char *my_strcat(char *dest, char *src)
 {
-    for (int count = 0; count <= my_strlen(src); count++) {
-        dest[my_strlen(dest)+count] = src[count];
-    }
+    int i = my_strlen(dest);
+    int j = 0;
+
+    while (src[j] != '\0')
+        dest[i] = src[j];
+        i++;
+        j++;
+    dest[i] = '\0';
     return dest;
 }

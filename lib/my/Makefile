@@ -26,6 +26,8 @@ SRC	=	my_compute_power_rec.c	\
 		my_strlowcase.c  \
 		my_strncmp.c  \
 		my_strncpy.c  \
+		my_strcat.c	\
+		my_str_concat.c		\
 		my_strstr.c	\
 		my_strupcase.c 	\
 		my_swap.c	\
@@ -39,6 +41,12 @@ SRC	=	my_compute_power_rec.c	\
 		my_put_unsigned.c	\
 		my_put_long.c	\
 		my_round.c	\
+		my_print_type.c	\
+		my_print_permissions.c	\
+		my_readdir.c	\
+		my_readdir_hid.c	\
+		my_readfiles.c	\
+		my_blocksize.c	\
 		my_printf.c	\
 
 OBJ	=	$(SRC:.c=.o)

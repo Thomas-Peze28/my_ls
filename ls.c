@@ -4,70 +4,71 @@
 ** File description:
 ** easy version of ls
 */
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <time.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <dirent.h>
-#include <pwd.h>
-#include <grp.h>
+
 #include "include/my.h"
 
-int read_dir(char *path)
+char *get_flags(char **av, char *active_flags)
 {
-    DIR *dir;
-    struct dirent *info_dir;
+    char flags[] = {'a', 'l'};
 
-    dir = opendir(path);
-    if (dir == NULL)
-        return 84;
-    info_dir = readdir(dir);
-    while (info_dir) {
-        if (info_dir->d_name[0] != '.') {
-            mini_printf("%s  ", info_dir->d_name);
-        }
-        info_dir = readdir(dir);
+    if (av[1][0] == '-' && av[1][1] == 'a') {
+        active_flags[0] = flags[0];
     }
-    closedir(dir);
-    mini_printf("\n");
-    return 0;
+    if (av[1][0] == '-' && av[1][1] == 'l') {
+        active_flags[1] = flags[1];
+    }
+    return active_flags;
 }
 
-int read_dir_hid(char *path)
-{
-    DIR *dir;
-    struct dirent *info_dir;
-
-    dir = opendir(path);
-    if (dir == NULL)
-        return 84;
-    info_dir = readdir(dir);
-    while (info_dir) {
-        mini_printf("%s  ", info_dir->d_name);
-        info_dir = readdir(dir);
-    }
-    closedir(dir);
-    mini_printf("\n");
-    return 0;
-}
-
-int my_ls(int ac, char **av)
+int ls_once(int ac, char *active_flags)
 {
     if (ac == 1) {
         read_dir("./");
         return 0;
     }
+    if (ac == 2 && active_flags[0] == 'a') {
+        read_dir_hid("./");
+        return 0;
+    }
+    if (ac == 2 && active_flags[1] == 'l') {
+        read_dir_files("./");
+        return 0;
+    }
+    return 0;
+}
+
+int ls_flags(int ac, char **av, char *active_flags, int i)
+{
+    if (ac > 2 && active_flags[0] == 'a') {
+        read_dir_hid(av[i]);
+    }
+    if (ac > 2 && active_flags[1] == 'l') {
+        get_total_blocks(av[i]);
+        read_dir_files(av[i]);
+    }
+    if (ac > 1 && active_flags[0] == '-' && active_flags[1] == '-') {
+        read_dir(av[i]);
+    }
+    return 0;
+}
+
+int my_ls(int ac, char **av)
+{
+    char active_flags[] = "--";
+
+    if (ac > 1) {
+        get_flags(av, active_flags);
+    }
+    ls_once(ac, active_flags);
     for (int i = 1; i < ac; i++) {
-        if (opendir(av[i]) == NULL) {
+        if (opendir(av[i]) == NULL && av[i][0] != '-') {
             mini_printf("%s\n", av[i]);
         }
         if (ac > 2 && opendir(av[i]) != NULL) {
             mini_printf("%s:\n", av[i]);
         }
-        read_dir(av[i]);
-        if (i != ac - 1) {
+        ls_flags(ac, av, active_flags, i);
+        if (i != ac - 1 && opendir(av[i]) != NULL) {
             mini_printf("\n");
         }
     }

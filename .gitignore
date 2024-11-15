@@ -12,3 +12,4 @@ unit_tests
 *.se
 coding*
 test*
+.vscode
