@@ -17,8 +17,11 @@ int read_dir_hid(char *path)
         return 84;
     info_dir = readdir(dir);
     while (info_dir) {
-        my_printf("%s  ", info_dir->d_name);
+        my_printf("%s", info_dir->d_name);
         info_dir = readdir(dir);
+        if (info_dir) {
+            my_printf(" ");
+        }
     }
     closedir(dir);
     my_printf("\n");

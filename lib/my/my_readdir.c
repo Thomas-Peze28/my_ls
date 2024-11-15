@@ -18,9 +18,12 @@ int read_dir(char *path)
     info_dir = readdir(dir);
     while (info_dir) {
         if (info_dir->d_name[0] != '.') {
-            my_printf("%s ", info_dir->d_name);
+            my_printf("%s", info_dir->d_name);
         }
         info_dir = readdir(dir);
+        if (info_dir && info_dir->d_name[0] != '.') {
+            my_printf(" ");
+        }
     }
     closedir(dir);
     my_printf("\n");
