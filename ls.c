@@ -62,14 +62,14 @@ int my_ls(int ac, char **av)
     ls_once(ac, active_flags);
     for (int i = 1; i < ac; i++) {
         if (opendir(av[i]) == NULL && av[i][0] != '-') {
-            mini_printf("%s\n", av[i]);
+            my_printf("%s\n", av[i]);
         }
         if (ac > 2 && opendir(av[i]) != NULL) {
-            mini_printf("%s:\n", av[i]);
+            my_printf("%s:\n", av[i]);
         }
         ls_flags(ac, av, active_flags, i);
         if (i != ac - 1 && opendir(av[i]) != NULL) {
-            mini_printf("\n");
+            my_printf("\n");
         }
     }
     return 0;

@@ -43,7 +43,7 @@ int read_dir_files(char *path)
     while (info_dir) {
         if (info_dir->d_name[0] != '.') {
             read_file(my_str_concat(fullpath, info_dir->d_name));
-            mini_printf("%s\n", info_dir->d_name);
+            my_printf("%s\n", info_dir->d_name);
         }
         info_dir = readdir(dir);
     }
