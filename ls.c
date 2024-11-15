@@ -64,7 +64,7 @@ int my_ls(int ac, char **av)
         if (opendir(av[i]) == NULL && av[i][0] != '-') {
             my_printf("%s\n", av[i]);
         }
-        if (ac > 2 && opendir(av[i]) != NULL) {
+        if (ac > 2 && opendir(av[i]) != NULL && active_flags[1] == '-') {
             my_printf("%s:\n", av[i]);
         }
         ls_flags(ac, av, active_flags, i);
