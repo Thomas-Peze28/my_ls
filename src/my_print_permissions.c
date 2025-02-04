@@ -5,6 +5,7 @@
 ** easy version of ls
 */
 #include "my.h"
+#include "ls.h"
 
 char *print_permissions(mode_t mode)
 {

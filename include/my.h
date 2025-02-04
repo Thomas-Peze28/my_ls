@@ -7,12 +7,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <time.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <dirent.h>
-#include <pwd.h>
-#include <grp.h>
 
 #ifndef MY_
     #define MY_
@@ -47,7 +41,7 @@ int my_showmem(char const *str, int size);
 char *my_strcat(char *dest, char *src);
 char *my_str_concat(char *dest, char *src);
 char *my_strncat(char *dest, char const *src, int nb);
-char **my_str_to_word_array(char const *str);
+char **my_str_to_word_array02(char const *str, char separator);
 void my_sort_int_array(int *tab, int size);
 int check_lettre(const char *str, int i);
 int check_number(const char *str, int i);
@@ -69,17 +63,5 @@ int my_put_float(double n, int pre);
 double my_round(double n, int pres);
 int my_put_unsigned(long int nb);
 int my_printf(const char *format, ...);
-char print_type(mode_t mode);
-char *print_permissions(mode_t mode);
-int read_dir(char *path);
-int read_dir_hid(char *path);
-int read_file(char *path);
-int get_total_blocks(char *path);
-int read_dir_files(char *path);
-int ls_bs(int ac, char **av);
-int my_ls(int ac, char **av);
-
-
-
 
 #endif /* MY_ */

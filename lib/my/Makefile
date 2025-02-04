@@ -32,7 +32,7 @@ SRC	=	my_compute_power_rec.c	\
 		my_strupcase.c 	\
 		my_swap.c	\
 		my_getsign.c    \
-		my_str_to_word_array.c	\
+		my_str_to_word_array_02.c	\
 		my_putnbr_base.c	\
 		mini_printf.c	\
 		my_put_float.c	\
@@ -41,12 +41,6 @@ SRC	=	my_compute_power_rec.c	\
 		my_put_unsigned.c	\
 		my_put_long.c	\
 		my_round.c	\
-		my_print_type.c	\
-		my_print_permissions.c	\
-		my_readdir.c	\
-		my_readdir_hid.c	\
-		my_readfiles.c	\
-		my_blocksize.c	\
 		my_printf.c	\
 
 OBJ	=	$(SRC:.c=.o)

@@ -13,3 +13,5 @@ unit_tests
 coding*
 test*
 .vscode
+empty_dir
+one_file_folder

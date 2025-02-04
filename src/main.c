@@ -4,8 +4,8 @@
 ** File description:
 ** main
 */
-#include <stdio.h>
-#include "include/my.h"
+#include "my.h"
+#include "ls.h"
 
 int main(int ac, char **av)
 {
